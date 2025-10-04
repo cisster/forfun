@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "forfun:combine_steel"
+    }
+  ],
+  "results": [
+    {
+      "item": "forfun:combine_steel_plate"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P P",
+        "#L#",
+        "Z#Z"
+    ],
+    "key": {
+        "#": {
+            "item": "forfun:combine_steel"
+        },
+        "P": {
+            "item": "forfun:combine_steel_block"
+        },
+        "L": {
+            "item": "forfun:combine_steel_plate"
+        },
+        "Z": {
+            "item": "minecraft:leather"
+        }
+    },
+    "result": {
+        "item": "forfun:civil_defence_chestplate",
+        "count": 1
+    }
+
+}

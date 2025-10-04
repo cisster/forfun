@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#P#",
+        "GLG",
+        "LCL"
+    ],
+    "key": {
+        "#": {
+            "item": "forfun:combine_steel"
+        },
+        "P": {
+            "item": "forfun:combine_steel_plate"
+        },
+        "L": {
+            "item": "minecraft:leather"
+        },
+        "G": {
+            "item": "minecraft:light_blue_stained_glass_pane"
+        },
+        "C": {
+            "item": "minecraft:coal_block"
+        }
+    },
+    "result": {
+        "item": "forfun:civil_defence_helmet",
+        "count": 1
+    }
+
+}

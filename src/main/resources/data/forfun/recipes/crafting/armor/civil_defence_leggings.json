@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P#P",
+        "L L",
+        "L L"
+    ],
+    "key": {
+        "#": {
+            "item": "forfun:combine_steel"
+        },
+        "P": {
+            "item": "forfun:combine_steel_block"
+        },
+        "L": {
+            "item": "minecraft:leather"
+        }        
+    },
+    "result": {
+        "item": "forfun:civil_defence_leggings",
+        "count": 1
+    }
+
+}

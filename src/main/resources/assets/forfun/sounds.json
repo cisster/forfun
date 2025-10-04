@@ -1,0 +1,11 @@
+{
+  "bolt": {
+    "subtitle": "forfun.subtitle.bolt",
+    "sounds": [
+      {
+        "name": "forfun:bolt",
+        "stream": false
+      }
+    ]
+  }
+}
