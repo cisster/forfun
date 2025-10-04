@@ -6,6 +6,8 @@ import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.event.TickEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
+import ru.minecraft.forfun.forfun.util.autoupdater.AutoUpdater
+
 
 @Mod.EventBusSubscriber(modid = Forfun.ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = [Dist.CLIENT])
 object ClientForgeListener {
@@ -13,6 +15,7 @@ object ClientForgeListener {
     val player: LocalPlayer? = minecraft.player
     var overlay: Boolean = true
     private val disable_overlay = KeyRegistry.OFF_OVERLAY
+    private val test_button = KeyRegistry.TEST_BUTTON
 
 
     @SubscribeEvent
@@ -20,6 +23,9 @@ object ClientForgeListener {
         if (event.phase == TickEvent.Phase.END) {
             if (disable_overlay.get().consumeClick()) {
                 overlay = !overlay
+            }
+            if (test_button.get().consumeClick()) {
+                AutoUpdater.downloadFile()
             }
         }
     }

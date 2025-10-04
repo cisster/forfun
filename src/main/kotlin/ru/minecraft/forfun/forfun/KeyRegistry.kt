@@ -24,11 +24,22 @@ object KeyRegistry {
             "key.categories.forfun"
         )
     }
+    val TEST_BUTTON: Lazy<KeyMapping> = Lazy.of {
+        KeyMapping(
+            "key.forfun.test_button",
+            KeyConflictContext.UNIVERSAL,
+            KeyModifier.CONTROL,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_5,
+            "key.categories.forfun"
+        )
+    }
 
 
 @SubscribeEvent
 fun registerBindings(event: RegisterKeyMappingsEvent) {
         event.register(OFF_OVERLAY.get())
+        event.register(TEST_BUTTON.get())
     }
 }
 
