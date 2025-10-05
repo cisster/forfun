@@ -21,7 +21,6 @@ object AutoUpdater {
     val MCDIR: Path = FMLPaths.GAMEDIR.get()
     val version: URL = URL("https://raw.githubusercontent.com/cisster/forfun/refs/heads/master/version.txt")
     val file: File = File("$MCDIR\\mods\\forfun.jar")
-    val fakefile: Path = Path("$MCDIR\\mods\\forfun-$${checkUpdate()}.jar")
     val DIRECTORY: Path = Path("$MCDIR\\forfun")
     val LOGGER: Logger = LogManager.getLogger(ID)
 
@@ -47,16 +46,12 @@ object AutoUpdater {
                 LOGGER.log(Level.ERROR, "Failed to check version")
             }.getOrNull()
     }
-    fun reset(){
-        Files.deleteIfExists(fakefile)
-    }
     fun firstCreation(){
         if (!Files.isDirectory(DIRECTORY)){
             Files.createDirectory(DIRECTORY)
         }
         if (!Files.isReadable(Path("$DIRECTORY\\version.txt"))){
             Files.createFile(Path("$DIRECTORY\\version.txt"))
-            reset()
         }
     }
     fun checkShowScreen(): Boolean {
