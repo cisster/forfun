@@ -59,6 +59,7 @@ object Forfun {
 
     private fun onCommonSetup(event: FMLCommonSetupEvent) {
         LOGGER.log(Level.INFO, "Common setup...4242424")
+        AutoUpdater.firstCreation()
         event.enqueueWork {
             PacketHandler.registerPackets()
         }

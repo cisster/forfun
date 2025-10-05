@@ -19,7 +19,7 @@ import kotlin.system.exitProcess
 
 object AutoUpdater {
     val MCDIR: Path = FMLPaths.GAMEDIR.get()
-    val version: URL = URL("https://raw.githubusercontent.com/cisster/forfun/refs/heads/master/version.txt  ")
+    val version: URL = URL("https://raw.githubusercontent.com/cisster/forfun/refs/heads/master/version.txt")
     val file: File = File("$MCDIR\\mods\\forfun.jar")
     val DIRECTORY: Path = Path("$MCDIR\\forfun")
     val LOGGER: Logger = LogManager.getLogger(ID)
@@ -46,7 +46,14 @@ object AutoUpdater {
                 LOGGER.log(Level.ERROR, "Failed to check version")
             }.getOrNull()
     }
-
+    fun firstCreation(){
+        if (!Files.isDirectory(DIRECTORY)){
+            Files.createDirectory(DIRECTORY)
+        }
+        if (!Files.isReadable(Path("$DIRECTORY\\version.txt"))){
+            Files.createFile(Path("$DIRECTORY\\version.txt"))
+        }
+    }
     fun checkShowScreen(): Boolean {
         val previousModVersion = Files.readString(Path("$DIRECTORY\\version.txt"))
         val modVersion = checkUpdate()
@@ -54,6 +61,7 @@ object AutoUpdater {
     }
 
     fun getUpdated(){
+        checkUpdate()
         if (downloadUpdate()) {
             exitProcess(0)
         }

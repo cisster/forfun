@@ -1,11 +1,14 @@
 package ru.minecraft.forfun.forfun
 
+import net.minecraft.ChatFormatting
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.screens.AlertScreen
 import net.minecraft.client.gui.screens.ConfirmScreen
 import net.minecraft.client.gui.screens.TitleScreen
 import net.minecraft.client.player.LocalPlayer
 import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.Style
+import net.minecraft.network.chat.TextColor
 import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent
 import net.minecraftforge.event.TickEvent
@@ -39,7 +42,7 @@ object ClientForgeListener {
     @SubscribeEvent
     fun onStart(event: TickEvent.ClientTickEvent) {
         val mc = Minecraft.getInstance()
-        if (mc.screen is TitleScreen && !hasShownScreen && !AutoUpdater.checkShowScreen()) {
+        if (mc.screen is TitleScreen && !hasShownScreen && AutoUpdater.checkShowScreen()) {
             mc.tell {
                 mc.setScreen(
                     updateScreen(
@@ -53,7 +56,8 @@ object ClientForgeListener {
                             }
                         },
                         Component.literal("Установить обновление мода"),
-                        Component.literal("${AutoUpdater.checkUpdate()}")
+                        Component.literal("Мод для приколов - ${AutoUpdater.checkUpdate()}").withStyle(Style.EMPTY.withColor(
+                            TextColor.fromLegacyFormat(ChatFormatting.GREEN)))
                     )
                 )
             }
