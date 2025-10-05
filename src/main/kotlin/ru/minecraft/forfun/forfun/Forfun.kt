@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger
 import ru.minecraft.forfun.forfun.ClientForgeListener.minecraft
 import ru.minecraft.forfun.forfun.packets.PacketHandler
 import ru.minecraft.forfun.forfun.registry.*
+import ru.minecraft.forfun.forfun.util.autoupdater.AutoUpdater
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.forge.runForDist
 

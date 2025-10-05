@@ -1,11 +1,17 @@
 package ru.minecraft.forfun.forfun
 
 import net.minecraft.client.Minecraft
+import net.minecraft.client.gui.screens.AlertScreen
+import net.minecraft.client.gui.screens.ConfirmScreen
+import net.minecraft.client.gui.screens.TitleScreen
 import net.minecraft.client.player.LocalPlayer
+import net.minecraft.network.chat.Component
 import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent
 import net.minecraftforge.event.TickEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
+import ru.minecraft.forfun.forfun.screens.updateScreen
 import ru.minecraft.forfun.forfun.util.autoupdater.AutoUpdater
 
 
@@ -16,7 +22,7 @@ object ClientForgeListener {
     var overlay: Boolean = true
     private val disable_overlay = KeyRegistry.OFF_OVERLAY
     private val test_button = KeyRegistry.TEST_BUTTON
-
+    var hasShownScreen = false
 
     @SubscribeEvent
     fun onClientTick(event: TickEvent.ClientTickEvent) {
@@ -25,9 +31,35 @@ object ClientForgeListener {
                 overlay = !overlay
             }
             if (test_button.get().consumeClick()) {
-                AutoUpdater.downloadFile()
+                AutoUpdater.downloadUpdate()
             }
         }
+    }
+
+    @SubscribeEvent
+    fun onStart(event: TickEvent.ClientTickEvent) {
+        val mc = Minecraft.getInstance()
+        if (mc.screen is TitleScreen && !hasShownScreen && !AutoUpdater.checkShowScreen()) {
+            mc.tell {
+                mc.setScreen(
+                    updateScreen(
+                        { accepted ->
+                            if (accepted) {
+                                AutoUpdater.getUpdated()
+                                mc.setScreen(null)
+                            } else {
+                                // Действие при отказе, например, ничего не делать или записать в лог
+                                mc.setScreen(null)
+                            }
+                        },
+                        Component.literal("Установить обновление мода"),
+                        Component.literal("${AutoUpdater.checkUpdate()}")
+                    )
+                )
+            }
+        }
+        hasShownScreen = true
+
     }
 }
 
