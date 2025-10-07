@@ -33,6 +33,10 @@ object Forfun {
         EntityRegistry.ENTITIES.register(MOD_BUS)
         ParticleRegisrty.PARTICLE.register(MOD_BUS)
         SoundRegistry.SOUND_EVENTS.register(MOD_BUS)
+        MobEffectRegistry.MOB_EFFECTS.register(MOD_BUS)
+        PotionsRegistry.POTIONS.register(MOD_BUS)
+
+
 
         MOD_BUS.addListener(::onCommonSetup)
 
@@ -59,7 +63,7 @@ object Forfun {
 
     private fun onCommonSetup(event: FMLCommonSetupEvent) {
         LOGGER.log(Level.INFO, "Common setup...4242424")
-        AutoUpdater.firstCreation()
+
         event.enqueueWork {
             PacketHandler.registerPackets()
         }
@@ -67,7 +71,7 @@ object Forfun {
 
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.log(Level.INFO, "Initializing client...4242424")
-
+        AutoUpdater.firstCreation()
     }
 
     /**

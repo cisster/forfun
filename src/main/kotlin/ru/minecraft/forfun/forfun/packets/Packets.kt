@@ -1,6 +1,7 @@
 package ru.minecraft.forfun.forfun.packets
 
 import net.minecraft.network.FriendlyByteBuf
+import net.minecraft.world.entity.player.Player
 import net.minecraftforge.network.NetworkEvent
 import java.util.function.Supplier
 
@@ -59,44 +60,6 @@ class MovePlayer(private var x: Double, private var y: Double, private var z: Do
 
 
 
-//class SwitchCamera(val entityId: Int) {
-//    companion object {
-//        fun encode(packet: SwitchCamera, buffer: FriendlyByteBuf) {
-//            buffer.writeVarInt(packet.entityId)
-//        }
-//
-//        fun decode(buffer: FriendlyByteBuf): SwitchCamera {
-//            return SwitchCamera(buffer.readVarInt())
-//        }
-//
-//        fun handle(packet: SwitchCamera, context: Supplier<NetworkEvent.Context>) {
-//            context.get().enqueueWork {
-//                val mc = Minecraft.getInstance()
-//                val entity = mc.level?.getEntity(packet.entityId)
-//                val isCamera = entity is DroneEntity
-//
-//                if (isCamera || entity is Player) {
-//                    mc.setCameraEntity(entity)
-//
-//
-//                    // Дополнительные настройки для режима камеры дрона
-//                    if (isCamera) {
-//                        mc.player?.apply {
-//                            xxa = 0.0f
-//                            zza = 0.0f
-//                            setJumping(false)
-//                        }
-//
-//                        // Можно добавить визуальные эффекты
-//                    }
-//
-//                    mc.levelRenderer.allChanged()
-//                }
-//            }
-//            context.get().packetHandled = true
-//        }
-//    }
-//}
 //class DroneCameraRequestPacket(val frequency: Int) {
 //    companion object {
 //        fun encode(packet: DroneCameraRequestPacket, buffer: FriendlyByteBuf) {

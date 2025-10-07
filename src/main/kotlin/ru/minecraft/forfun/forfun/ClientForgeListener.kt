@@ -14,6 +14,7 @@ import net.minecraftforge.client.event.ClientPlayerNetworkEvent
 import net.minecraftforge.event.TickEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
+import ru.minecraft.forfun.forfun.renderer.player.EgorLoh
 import ru.minecraft.forfun.forfun.screens.updateScreen
 import ru.minecraft.forfun.forfun.util.autoupdater.AutoUpdater
 
@@ -34,7 +35,7 @@ object ClientForgeListener {
                 overlay = !overlay
             }
             if (test_button.get().consumeClick()) {
-                AutoUpdater.downloadUpdate()
+
             }
         }
     }

@@ -1,15 +1,11 @@
 package ru.minecraft.forfun.forfun.util.autoupdater
 
-import net.minecraft.client.Minecraft
-import net.minecraftforge.api.distmarker.Dist
-import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.fml.loading.FMLPaths
 import org.apache.commons.io.FileUtils
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import ru.minecraft.forfun.forfun.Forfun.ID
 import java.io.File
-import java.io.IOException
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Path
